@@ -1,6 +1,6 @@
+Question: Simple programm in typescript
+
 How to run the programm
-
-
 1. 3dots -> Terminal -> New Terminal
 2. cd typescript
 3. npm i typescript
