@@ -29,11 +29,10 @@ public class StudentService {
     }
 
     public Student updateUser(Long id, Student updatedUser) {
-        if (db.existsById(id)) {
-            updatedUser.setId(id);
-            return db.save(updatedUser);
-        }
-        return null; // Handle not found
+        Student s = db.findById(id).orElseThrow();
+        s.setName(updatedUser.getName());
+        s.setEmail(updatedUser.getEmail());
+        return db.save(s); 
     }
 
     public void deleteUser(Long id) {

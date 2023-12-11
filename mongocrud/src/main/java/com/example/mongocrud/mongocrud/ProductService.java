@@ -1,6 +1,7 @@
 package com.example.mongocrud.mongocrud;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +17,17 @@ public class ProductService {
     }
 
     public Optional<Product> getbyid(String id) {
-        return db.findById(id);
+        Optional<Product> p = db.findById(id);
+        return p;
     }
+
+public Product updateP(Product p , String id){
+    Product oldp = db.findById(id).orElseThrow();
+    oldp.setProduct_name(p.getProduct_name());
+    oldp.setProduct_price(p.getProduct_price());
+
+    return db.save(oldp);
+}
 
     public Product save(Product p) {
         return db.save(p);

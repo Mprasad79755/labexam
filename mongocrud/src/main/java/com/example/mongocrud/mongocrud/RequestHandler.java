@@ -1,6 +1,7 @@
 package com.example.mongocrud.mongocrud;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +28,12 @@ public class RequestHandler {
 	    @PostMapping
 	    public Product saveEntity(@RequestBody Product p) {
 	        return db.save(p);
+	    }
+
+
+		@PutMapping("/{id}")
+	    public Product update(@RequestBody Product p , @PathVariable String id) {
+			return db.updateP(p, id);
 	    }
 
 	    @DeleteMapping("/{id}")
